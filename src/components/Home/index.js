@@ -12,17 +12,18 @@ class Home extends Component {
         <Header />
         <div className="heading-home-container">
           <h1 className="heading">Find The Job That Fits Your Life</h1>
+
           <p className="para-text">
             Millions of people are searching for jobs, salary <br />
             information, company reviews. Find the job that fits your <br />
             abilities and potential
           </p>
-          <button type="button" className="find-jobs-button">
-            <Link to="/jobs" className="jobs-find-text">
-              {' '}
+
+          <Link to="/jobs" className="jobs-find-text">
+            <button type="button" className="find-jobs-button">
               Find Jobs
-            </Link>
-          </button>
+            </button>
+          </Link>
         </div>
       </div>
     )

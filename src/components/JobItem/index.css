@@ -1,0 +1,87 @@
+.job-item-container {
+  width: 97%;
+  background-color: #202020;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+
+.company-heading-logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.company-logo {
+  height: 50px;
+  width: 50px;
+}
+
+.company-heading-container {
+  margin-left: 10px;
+}
+
+.company-heading-text {
+  font-size: 20px;
+  padding-bottom: 3px;
+  font-weight: 500;
+}
+
+.rating-container {
+  display: flex;
+  align-items: center;
+}
+
+.rating-icon {
+  color: #fbbf24;
+  font-size: 14px;
+  margin-right: 2px;
+}
+
+.line {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 98%;
+  margin-left: 5px;
+}
+
+.icons-text-container {
+  display: flex;
+  margin-top: 20px;
+  align-items: center;
+  width: 98%;
+  justify-content: space-between;
+}
+
+.location-job-container {
+  display: flex;
+}
+
+.location-container {
+  display: flex;
+  margin-right: 30px;
+  align-items: center;
+}
+
+.location-icon {
+  margin-right: 3px;
+}
+
+.location-text {
+  font-weight: 400;
+}
+
+.internship-container {
+  display: flex;
+
+  align-items: center;
+}
+
+.heading-description {
+  font-weight: 500;
+}
+
+.parag {
+  font-weight: 300;
+  padding-top: 15px;
+  padding-bottom: 20px;
+}

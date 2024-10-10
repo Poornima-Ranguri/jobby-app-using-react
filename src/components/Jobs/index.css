@@ -1,14 +1,15 @@
 .jobs-container {
   background-color: #000000;
   font-family: 'Roboto';
-  height: 100vh;
+
   width: 100vw;
   color: #ffffff;
   display: flex;
+  justify-content: space-around;
 }
 
 .profile-container {
-  width: 40%;
+  width: 20%;
   margin-top: 20px;
   margin-left: 20px;
 }
@@ -24,6 +25,12 @@
   padding-left: 20px;
 }
 
+.hr-line {
+  width: 350px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
 .profile-head-text {
   color: #4f46e5;
   font-size: 35px;
@@ -36,10 +43,54 @@
   font-size: 20px;
 }
 
+.employment-types-container {
+  text-align: center;
+  width: 350px;
+}
+
 .jobs-search-and-display-container {
-  width: 59%;
+  width: 60%;
   margin-top: 20px;
-  margin-left: 10px;
+  margin-left: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.search-input-container {
+  border-color: #2c364c;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 40%;
+  border-style: solid;
+  border-radius: 10px;
+}
+
+.input-search {
+  background-color: transparent;
+  border: none;
+  font-size: 18px;
+  padding-left: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  width: 92%;
+  outline: none;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.search-icon {
+  color: #ffffff;
+}
+
+.search-button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-right: 10px;
 }
 
 .retry-button {
@@ -70,4 +121,78 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.jobs-loader-container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.text {
+  font-size: 20px;
+}
+
+.jobs-failure-button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.failure-jobs-container {
+  width: 80%;
+  text-align: center;
+}
+
+.failure-heading {
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+.failure-paragraph {
+  color: aliceblue;
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.failure-button {
+  color: white;
+  background-color: #6366f1;
+  border: 0;
+  border-radius: 5px;
+  padding: 5px;
+  width: 100px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.jobs-list-container {
+  list-style-type: none;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.no-jobs-container {
+  width: 60%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.no-jobs-img {
+  width: 85%;
+}
+
+.no-jobs-text {
+  padding-top: 10px;
+  padding-bottom: 20px;
 }
