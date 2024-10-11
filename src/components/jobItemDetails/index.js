@@ -104,6 +104,10 @@ class JobItemDetails extends Component {
     }
   }
 
+  onGetData = () => {
+    this.getJobDetails()
+  }
+
   renderFailureView = () => {
     const {match} = this.props
     const {params} = match
@@ -127,7 +131,7 @@ class JobItemDetails extends Component {
           type="button"
           id="button"
           className="job-item-failure-button"
-          onClick={this.getJobData}
+          onClick={this.onGetData}
         >
           Retry
         </button>
@@ -165,7 +169,11 @@ class JobItemDetails extends Component {
         <h3 className="life-text">Life At Company</h3>
         <div className="life-at-company-container">
           <p className="life-parag">{description}</p>
-          <img src={imageUrl} alt="life at company" className="life-image" />
+          <img
+            src={imageUrl}
+            alt="job details company logo"
+            className="life-image"
+          />
         </div>
       </div>
     )
@@ -243,7 +251,7 @@ class JobItemDetails extends Component {
   }
 
   renderSuccessJobDetails = () => {
-    const {skillsList, similarJobs} = this.state
+    const {similarJobs} = this.state
 
     return (
       <div className="job-details-home-container">
@@ -258,7 +266,7 @@ class JobItemDetails extends Component {
                   <img
                     src={eachJob.companyLogoUrl}
                     className="company-logo"
-                    alt="company logo"
+                    alt="similar job company logo"
                   />
                   <div className="company-heading-container-similar-jobs">
                     <h1 className="company-heading-text-similar-jobs">

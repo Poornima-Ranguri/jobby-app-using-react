@@ -45,7 +45,6 @@
 
 .employment-types-container {
   text-align: center;
-  width: 350px;
 }
 
 .jobs-search-and-display-container {
@@ -134,6 +133,7 @@
 
 .text {
   font-size: 20px;
+  padding-left: 40px;
 }
 
 .jobs-failure-button-container {

@@ -1,0 +1,17 @@
+.filter-group-container {
+  width: 100%;
+}
+.employe-container {
+  padding-top: 20px;
+  list-style-type: none;
+}
+
+.employee-item-container {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.checkox-item {
+  margin-right: 10px;
+  cursor: pointer;
+}

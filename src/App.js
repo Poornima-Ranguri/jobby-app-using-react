@@ -14,8 +14,9 @@ const App = () => (
       <Route exact path="/login" component={Login} />
       <ProtectedRoute exact path="/" component={Home} />
       <ProtectedRoute exact path="/jobs" component={Jobs} />
+      <ProtectedRoute exact path="/jobs/:id" component={JobItemDetails} />
       <Route exact path="/not-found" component={NotFound} />
-      <Route exact path="/jobs/:id" component={JobItemDetails} />
+
       <Redirect to="/not-found" />
     </Switch>
   </>

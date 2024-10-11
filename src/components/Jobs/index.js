@@ -3,6 +3,8 @@ import Cookies from 'js-cookie'
 import Loader from 'react-loader-spinner'
 import {BsSearch} from 'react-icons/bs'
 import JobItem from '../JobItem'
+import FiltersGroup from '../FiltersGroup'
+import SalaryFilter from '../salaryFilter'
 import './index.css'
 
 const apiStatusConstants = {
@@ -64,7 +66,7 @@ class Jobs extends Component {
     profileDetails: {},
     searchjobsInput: '',
     employmentType: [],
-    minimumPackage: '',
+    minimumPackage: 0,
     jobsData: [],
   }
 
@@ -84,6 +86,8 @@ class Jobs extends Component {
       },
       method: 'GET',
     }
+
+    console.log(jobsApiUrl)
 
     const response = await fetch(jobsApiUrl, options)
 
@@ -158,6 +162,25 @@ class Jobs extends Component {
     this.setState({searchjobsInput: event.target.value})
   }
 
+  onUpdateEmployeeType = type => {
+    this.setState(prevState => {
+      if (prevState.employmentType.includes(type)) {
+        return {
+          employmentType: prevState.employmentType.filter(
+            employment => employment !== type,
+          ),
+        }
+      }
+      return {
+        employmentType: [...prevState.employmentType, type],
+      }
+    }, this.getJobs)
+  }
+
+  onChangeSalary = salary => {
+    this.setState({minimumPackage: salary}, this.getJobs)
+  }
+
   renderProfileDetails = () => {
     const {profileDetails} = this.state
     const {name, profileImageUrl, shortBio} = profileDetails
@@ -171,10 +194,18 @@ class Jobs extends Component {
         <hr className="hr-line" />
         <div className="employment-types-container">
           <h1 className="text">Type of Employment</h1>
+          <FiltersGroup
+            employmentTypesList={employmentTypesList}
+            onUpdateEmployeeType={this.onUpdateEmployeeType}
+          />
         </div>
         <hr className="hr-line" />
         <div className="employment-types-container">
           <h1 className="text">Salary Range</h1>
+          <SalaryFilter
+            salaryRangesList={salaryRangesList}
+            onSalaryChange={this.onChangeSalary}
+          />
         </div>
       </div>
     )
