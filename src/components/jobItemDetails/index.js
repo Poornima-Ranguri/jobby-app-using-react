@@ -1,6 +1,10 @@
 import {Component} from 'react'
 import Cookies from 'js-cookie'
-import {Loader} from 'react-loader-spinner'
+import Loader from 'react-loader-spinner'
+import {BsFillBriefcaseFill, BsStarFill} from 'react-icons/bs'
+import {MdLocationOn} from 'react-icons/md'
+import {BiLinkExternal} from 'react-icons/bi'
+import Header from '../Header'
 import './index.css'
 
 const apiStatusConstants = {
@@ -56,12 +60,13 @@ class JobItemDetails extends Component {
         packagePerAnnum: data.job_details.package_per_annum,
         rating: data.job_details.rating,
         title: data.job_details.title,
+        companyWebsiteUrl: data.job_details.company_website_url,
       }
 
       console.log('jobDetails', updatedJobDetails)
 
       const updatedLifeAtCompany = {
-        description: data.job_details.life_at_company,
+        description: data.job_details.life_at_company.description,
         imageUrl: data.job_details.life_at_company.image_url,
       }
 
@@ -151,12 +156,143 @@ class JobItemDetails extends Component {
     }
   }
 
+  renderLifeAtCompany = () => {
+    const {lifeAtCompany} = this.state
+    const {description, imageUrl} = lifeAtCompany
+
+    return (
+      <div className="life-at-company">
+        <h3 className="life-text">Life At Company</h3>
+        <div className="life-at-company-container">
+          <p className="life-parag">{description}</p>
+          <img src={imageUrl} alt="life at company" className="life-image" />
+        </div>
+      </div>
+    )
+  }
+
+  renderJobDetails = () => {
+    const {jobDetails, skillsList} = this.state
+    const {
+      title,
+      companyLogoUrl,
+      employmentType,
+      jobDescription,
+      packagePerAnnum,
+      rating,
+      location,
+      companyWebsiteUrl,
+    } = jobDetails
+
+    return (
+      <div className="job-item-container-Details">
+        <div className="company-heading-logo-container-Details">
+          <img
+            src={companyLogoUrl}
+            className="company-logo-Details"
+            alt="company logo"
+          />
+          <div className="company-heading-container-Details">
+            <h1 className="company-heading-text-Details">{title}</h1>
+            <div className="rating-container-Details">
+              <BsStarFill className="rating-icon-Details" />
+              <p className="rating-text-Details">{rating}</p>
+            </div>
+          </div>
+        </div>
+        <div className="icons-text-container-Details">
+          <div className="location-job-container-Details">
+            <div className="location-container-Details">
+              <MdLocationOn className="location-icon-Details" />
+              <p className="location-text-Details">{location}</p>
+            </div>
+            <div className="internship-container-Details">
+              <BsFillBriefcaseFill className="location-icon-Details" />
+              <p className="location-text-Details">{employmentType}</p>
+            </div>
+          </div>
+          <p>{packagePerAnnum}</p>
+        </div>
+        <hr className="line-Details" />
+        <div className="description-container">
+          <h3 className="heading-description-Details">Description</h3>
+          <div className="visit-container">
+            <a href={companyWebsiteUrl} className="visit-heading">
+              Visit
+            </a>
+            <BiLinkExternal className="visit-icon" />
+          </div>
+        </div>
+        <p className="parag-Details">{jobDescription}</p>
+        <h3 className="heading-skills">Skills</h3>
+        <ul className="skills-container">
+          {skillsList.map(eachSkill => (
+            <li key={eachSkill.name} className="skill-item">
+              <img
+                src={eachSkill.imageUrl}
+                alt={eachSkill.name}
+                className="skill-logo"
+              />
+              <p className="skill-text">{eachSkill.name}</p>
+            </li>
+          ))}
+        </ul>
+        {this.renderLifeAtCompany()}
+      </div>
+    )
+  }
+
   renderSuccessJobDetails = () => {
-    const {jobDetails} = this.state
+    const {skillsList, similarJobs} = this.state
 
     return (
       <div className="job-details-home-container">
-        <h1>Job Card</h1>
+        <Header />
+        {this.renderJobDetails()}
+        <div className="similar-jobs-container">
+          <h1>Similar Jobs</h1>
+          <ul className="similar-jobs-card-container">
+            {similarJobs.map(eachJob => (
+              <li key={eachJob.id} className="job-item-container-similar-jobs">
+                <div className="company-heading-logo-container-similar-jobs">
+                  <img
+                    src={eachJob.companyLogoUrl}
+                    className="company-logo"
+                    alt="company logo"
+                  />
+                  <div className="company-heading-container-similar-jobs">
+                    <h1 className="company-heading-text-similar-jobs">
+                      {eachJob.title}
+                    </h1>
+                    <div className="rating-container-similar-jobs">
+                      <BsStarFill className="rating-icon-similar-jobs" />
+                      <p className="rating-text-similar-jobs">
+                        {eachJob.rating}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <hr className="line" />
+                <h3 className="heading-description">Description</h3>
+                <p className="parag">{eachJob.jobDescription}</p>
+                <div className="icons-text-container-similar-jobs">
+                  <div className="location-job-container-similar-jobs">
+                    <div className="location-container">
+                      <MdLocationOn className="location-icon" />
+                      <p className="location-text">{eachJob.location}</p>
+                    </div>
+                    <div className="internship-container">
+                      <BsFillBriefcaseFill className="location-icon" />
+                      <p className="location-text">{eachJob.employmentType}</p>
+                    </div>
+                  </div>
+                  <p>{eachJob.packagePerAnnum}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     )
   }
