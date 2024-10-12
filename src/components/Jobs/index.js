@@ -79,7 +79,9 @@ class Jobs extends Component {
     this.setState({jobStatus: jobConstants.inProgress})
     const {searchjobsInput, employmentType, minimumPackage} = this.state
     const jwtToken = Cookies.get('jwt_token')
-    const jobsApiUrl = `https://apis.ccbp.in/jobs?employment_type=${employmentType}&minimum_package=${minimumPackage}&search=${searchjobsInput}`
+    const jobsApiUrl = `https://apis.ccbp.in/jobs?employment_type=${employmentType.join(
+      ',',
+    )}&minimum_package=${minimumPackage}&search=${searchjobsInput}`
     const options = {
       headers: {
         Authorization: `Bearer ${jwtToken}`,

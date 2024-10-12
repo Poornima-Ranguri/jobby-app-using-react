@@ -12,7 +12,7 @@ const Header = props => {
 
   return (
     <div className="header-container">
-      <div className="logo-container">
+      <li className="logo-container">
         <Link to="/">
           <img
             src="https://assets.ccbp.in/frontend/react-js/logo-img.png"
@@ -20,7 +20,7 @@ const Header = props => {
             className="logo"
           />
         </Link>
-      </div>
+      </li>
       <div className="heading-container">
         <ul className="list-heading-container">
           <li>
