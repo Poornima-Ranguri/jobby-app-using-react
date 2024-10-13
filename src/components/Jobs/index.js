@@ -5,6 +5,7 @@ import {BsSearch} from 'react-icons/bs'
 import JobItem from '../JobItem'
 import FiltersGroup from '../FiltersGroup'
 import SalaryFilter from '../salaryFilter'
+import Header from '../Header'
 import './index.css'
 
 const apiStatusConstants = {
@@ -161,7 +162,7 @@ class Jobs extends Component {
   }
 
   onChangeSearchInput = event => {
-    this.setState({searchjobsInput: event.target.value})
+    this.setState({searchjobsInput: event.target.value}, this.getJobs())
   }
 
   onUpdateEmployeeType = type => {
@@ -347,12 +348,15 @@ class Jobs extends Component {
 
   render() {
     return (
-      <div className="jobs-container">
-        {this.profileStatus()}
-        <div className="jobs-search-and-display-container">
-          {this.renderJobStatus()}
+      <>
+        <Header />
+        <div className="jobs-container">
+          {this.profileStatus()}
+          <div className="jobs-search-and-display-container">
+            {this.renderJobStatus()}
+          </div>
         </div>
-      </div>
+      </>
     )
   }
 }
